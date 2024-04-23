@@ -4,11 +4,10 @@ import * as React from 'react';
 import { useRef, useState, useEffect } from 'react';
 import Papa from "papaparse";
 import wellknown from 'wellknown';
-import Map, { CircleLayer, Layer, Popup, Source } from 'react-map-gl';
+import Map, {Layer, Popup, Source } from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import ReactMapGL, { Marker } from 'react-map-gl';
-import { FeatureCollection, Feature } from 'geojson';
-import Mapbox from 'react-map-gl/dist/esm/mapbox/mapbox';
+
 
 const Home = () => {
 
@@ -34,10 +33,6 @@ const Home = () => {
   const [popupInfo, setPopupInfo] = useState<{ longitude: number, latitude: number, popupText: any } | null>(null);
   const [polygonData, setPolygonData] = useState
     <{ type: string; features: { type: string; geometry: { type: string; coordinates: number[][][]; }; properties: { fill: string; "fill-outline-color": string; } }[] }>();
-  const [layerStyle, setLayerStyle] = useState
-    <{ type: string; geometry: { type: string; coordinates: number[][]; }; properties: { fill: string; 'fill-outline-color': string; } }[]>([]);
-  const [layerOutLineStyle, setLayerOutLineStyle] = useState
-    <{ type: string; geometry: { type: string; coordinates: number[][]; }; properties: { fill: string; 'fill-outline-color': string; } }[]>([]);
 
   const popupRef = React.useRef<mapboxgl.Popup>();
 
@@ -70,33 +65,6 @@ const Home = () => {
       };
       reader.readAsText(file);
     }
-
-    const polygonData = {
-      type: "FeatureCollection",
-      features: [
-        {
-          type: "Feature",
-          geometry: {
-            type: "Polygon",
-            coordinates: [
-              [
-                [140, 40],
-                [137, 30],
-                [135, 10],
-                [137, 30],
-                [140, 40]
-              ]
-            ],
-          },
-          properties: {
-            fill: "#FF5733",
-            "fill-outline-color": "#000000",
-          },
-        },
-      ],
-    };
-
-    setPolygonData(polygonData);
   };
 
   const handleCsvChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -239,7 +207,7 @@ const Home = () => {
             <button
               className='hover: cursor-pointer'
               onClick={() => handleMarkerClick(marker)}>
-              <img src="./location-pin.svg" width={25} height={25} />
+              <img src="./location.png" width={25} height={25} />
             </button>
           </Marker>
         ))}
@@ -249,10 +217,8 @@ const Home = () => {
             <Popup
               longitude={popupInfo.longitude}
               latitude={popupInfo.latitude}
-              //anchor="bottom"
               closeOnClick={false}
               onClose={() => setShowPopup(false)}
-            //style={{ width: '500px' }}
             >
               <div>{popupInfo.popupText}</div>
             </Popup>
