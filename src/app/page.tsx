@@ -8,7 +8,6 @@ import Map, {Layer, Popup, Source } from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import ReactMapGL, { Marker } from 'react-map-gl';
 
-
 const Home = () => {
 
   const [viewport, setViewport] = React.useState({
@@ -198,7 +197,6 @@ const Home = () => {
         {...viewport}
         onMove={(evt: { viewState: React.SetStateAction<{ latitude: number; longitude: number; zoom: number; }>; }) => setViewport(evt.viewState)}
         mapboxAccessToken={"pk.eyJ1IjoibmFwaGF0bXFhIiwiYSI6ImNsdjY4Y3Z5ajBicHkya3Jxa25tdjVxbTYifQ.bBZBuJMN49efxtIGwNbPWw"}
-        //mapStyle="mapbox://styles/naphatmqa/clv6avjcq00m401pk6r7d22j0"
         mapStyle="mapbox://styles/mapbox/streets-v11"
       >
 
@@ -223,8 +221,6 @@ const Home = () => {
               <div>{popupInfo.popupText}</div>
             </Popup>
           </div>
-
-
         ) : null
         }
 
