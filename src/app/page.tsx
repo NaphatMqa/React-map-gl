@@ -177,7 +177,7 @@ const Home = () => {
             onChange={handleKwtChange}
           />
           <div className="HeaderButton flex items-center justify-center border-2 cursor-pointer">
-            <span>WKT</span>
+            <span>Add WKT</span>
           </div>
         </label>
 
@@ -189,7 +189,7 @@ const Home = () => {
             onChange={handleCsvChange}
           />
           <div className="HeaderButton flex items-center justify-center border-2 cursor-pointer ml-7">
-            <span>CSV</span>
+            <span>Add CSV</span>
           </div>
         </label>
       </div>
